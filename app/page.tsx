@@ -19,9 +19,26 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-black p-8 font-sans">
       <main className="w-full max-w-5xl">
-        <h1 className="text-4xl font-bold mb-12 text-black dark:text-white">
+        <h1 className="text-4xl font-bold mb-6 text-black dark:text-white">
           IBM Plex Sans Font Tests
         </h1>
+
+        <section className="mb-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <span>Alphabet sample</span>
+              <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-3 py-1 text-xs uppercase tracking-[0.2em]">
+                Upper &amp; lower case
+              </span>
+            </div>
+            <div className="text-xl font-medium text-black dark:text-white leading-snug">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            </div>
+            <div className="text-xl font-medium text-black dark:text-white leading-snug">
+              abcdefghijklmnopqrstuvwxyz
+            </div>
+          </div>
+        </section>
 
         <div className="space-y-12">
           {weights.map(({ weight, label }) => (
