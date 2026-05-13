@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-black p-8 font-sans">
       <main className="w-full max-w-5xl">
         <h1 className="text-4xl font-bold mb-12 text-black dark:text-white">
           IBM Plex Sans Font Tests
