@@ -21,7 +21,7 @@ export default function Home() {
   ];
 
   const [selectedSizes, setSelectedSizes] = useState(["text-base", "text-2xl"]);
-  const [sampleText, setSampleText] = useState("The quick brown fox");
+  const [sampleText, setSampleText] = useState("The quick brown fox jumps over the lazy dog.");
   const activeSizeLabels = sizes
     .filter((item) => selectedSizes.includes(item.size))
     .map((item) => item.label)
@@ -34,22 +34,22 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-black p-8 font-sans">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 p-8 font-sans">
       <main className="w-full max-w-5xl">
-        <h1 className="text-4xl font-bold mb-6 text-black dark:text-white">
+        <h1 className="text-4xl font-bold mb-6 text-black">
           IBM Plex Sans Font Tests
         </h1>
 
-        <section className="mb-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
+        <section className="mb-12 rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex flex-col gap-4">
-            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
-              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-3">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 mb-3">
                 <span>Alphabet sample</span>
-                <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
+                <span className="rounded-full border border-zinc-300 bg-zinc-100 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
                   3XL preview
                 </span>
               </div>
-              <div className="text-black dark:text-white">
+              <div className="text-black">
                 <div className="text-3xl font-medium leading-snug">
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ
                 </div>
@@ -59,9 +59,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
-              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-3">
-                <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 mb-3">
+                <span className="rounded-full border border-zinc-300 bg-zinc-100 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
                   Controls
                 </span>
               </div>
@@ -69,7 +69,7 @@ export default function Home() {
                 {sizes.map(({ size, label }) => (
                   <label
                     key={size}
-                    className="flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm text-black dark:text-white transition hover:border-sky-500 dark:hover:border-sky-400 cursor-pointer"
+                    className="flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-3 py-2 text-sm text-black transition hover:border-sky-500 cursor-pointer"
                   >
                     <input
                       type="checkbox"
@@ -82,16 +82,16 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex flex-col gap-2 text-sm">
-                <label className="flex flex-col gap-2 text-zinc-700 dark:text-zinc-300">
+                <label className="flex flex-col gap-2 text-zinc-700">
                   <span className="text-xs uppercase tracking-[0.2em]">Sample text</span>
                   <input
                     value={sampleText}
                     onChange={(event) => setSampleText(event.target.value)}
-                    className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm text-black outline-none transition focus:border-sky-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                    className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm text-black outline-none transition focus:border-sky-500"
                   />
                 </label>
               </div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-3">
+              <div className="text-xs text-zinc-500 mt-3">
                 Upper sample stays at 3XL; the checkbox list controls the examples below.
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function Home() {
         <div className="space-y-12">
           {weights.map(({ weight, label }) => (
             <div key={weight} className="space-y-4">
-              <div className="text-sm font-medium text-zinc-600 dark:text-zinc-400 border-b border-zinc-300 dark:border-zinc-700 pb-2">
+              <div className="text-sm font-medium text-zinc-600 border-b border-zinc-300 pb-2">
                 {label} ({weight})
               </div>
 
@@ -110,18 +110,18 @@ export default function Home() {
                   .filter((item) => selectedSizes.includes(item.size))
                   .map(({ size, label: sizeLabel }) => (
                     <div key={sizeLabel} className="space-y-1">
-                      <div className="text-xs text-zinc-500 dark:text-zinc-500">
+                      <div className="text-xs text-zinc-500">
                         {sizeLabel}
                       </div>
                       <div className="flex gap-6">
                         <div
-                          className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1`}
+                          className={`${size} text-black p-3 bg-white rounded border border-zinc-200 flex-1`}
                           style={{ fontWeight: weight }}
                         >
                           {sampleText}
                         </div>
                         <div
-                          className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1 uppercase`}
+                          className={`${size} text-black p-3 bg-white rounded border border-zinc-200 flex-1 uppercase`}
                           style={{ fontWeight: weight }}
                         >
                           {sampleText.toUpperCase()}
