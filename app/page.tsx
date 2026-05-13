@@ -28,13 +28,13 @@ export default function Home() {
             <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400">
               <span>Alphabet sample</span>
               <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-3 py-1 text-xs uppercase tracking-[0.2em]">
-                Upper &amp; lower case
+                medium:500 weight, 3xl size
               </span>
             </div>
-            <div className="text-xl font-medium text-black dark:text-white leading-snug">
+            <div className="text-3xl font-medium text-black dark:text-white leading-snug">
               ABCDEFGHIJKLMNOPQRSTUVWXYZ
             </div>
-            <div className="text-xl font-medium text-black dark:text-white leading-snug">
+            <div className="text-3xl font-medium text-black dark:text-white leading-snug">
               abcdefghijklmnopqrstuvwxyz
             </div>
           </div>
