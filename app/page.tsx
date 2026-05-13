@@ -118,13 +118,13 @@ export default function Home() {
                           className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1`}
                           style={{ fontWeight: weight }}
                         >
-                          The quick brown fox
+                          {sampleText}
                         </div>
                         <div
                           className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1 uppercase`}
                           style={{ fontWeight: weight }}
                         >
-                          The quick brown fox
+                          {sampleText.toUpperCase()}
                         </div>
                       </div>
                     </div>
