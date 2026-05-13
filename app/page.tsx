@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
   const weights = [
     { weight: 300, label: "Light" },
@@ -16,6 +20,18 @@ export default function Home() {
     { size: "text-3xl", label: "3XL (30px)" },
   ];
 
+  const [selectedSizes, setSelectedSizes] = useState(["text-base", "text-2xl"]);
+  const activeSizeLabels = sizes
+    .filter((item) => selectedSizes.includes(item.size))
+    .map((item) => item.label)
+    .join(", ");
+
+  const toggleSize = (size: string) => {
+    setSelectedSizes((prev) =>
+      prev.includes(size) ? prev.filter((item) => item !== size) : [...prev, size],
+    );
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-50 dark:bg-black p-8 font-sans">
       <main className="w-full max-w-5xl">
@@ -23,19 +39,41 @@ export default function Home() {
           IBM Plex Sans Font Tests
         </h1>
 
-        <section className="mb-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6">
+        <section className="mb-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
           <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              <span>Alphabet sample</span>
-              <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-3 py-1 text-xs uppercase tracking-[0.2em]">
-                medium:500 weight, 3xl size
-              </span>
+            <div className="flex flex-col gap-3 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
+                  Controlled sizes
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1">
+                {sizes.map(({ size, label }) => (
+                  <label
+                    key={size}
+                    className="flex items-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm text-black dark:text-white transition hover:border-sky-500 dark:hover:border-sky-400 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedSizes.includes(size)}
+                      onChange={() => toggleSize(size)}
+                      className="h-4 w-4 rounded accent-sky-600"
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
             </div>
-            <div className="text-3xl font-medium text-black dark:text-white leading-snug">
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            <div className="text-black dark:text-white">
+              <div className="text-3xl font-medium leading-snug">
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ
+              </div>
+              <div className="text-3xl font-medium leading-snug mt-1">
+                abcdefghijklmnopqrstuvwxyz
+              </div>
             </div>
-            <div className="text-3xl font-medium text-black dark:text-white leading-snug">
-              abcdefghijklmnopqrstuvwxyz
+            <div className="text-xs text-zinc-500 dark:text-zinc-500">
+              Upper sample stays at 3XL; the checkbox list controls the examples below.
             </div>
           </div>
         </section>
@@ -48,27 +86,29 @@ export default function Home() {
               </div>
 
               <div className="space-y-3">
-                {sizes.map(({ size, label: sizeLabel }) => (
-                  <div key={sizeLabel} className="space-y-1">
-                    <div className="text-xs text-zinc-500 dark:text-zinc-500">
-                      {sizeLabel}
-                    </div>
-                    <div className="flex gap-6">
-                      <div
-                        className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1`}
-                        style={{ fontWeight: weight }}
-                      >
-                        The quick brown fox
+                {sizes
+                  .filter((item) => selectedSizes.includes(item.size))
+                  .map(({ size, label: sizeLabel }) => (
+                    <div key={sizeLabel} className="space-y-1">
+                      <div className="text-xs text-zinc-500 dark:text-zinc-500">
+                        {sizeLabel}
                       </div>
-                      <div
-                        className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1 uppercase`}
-                        style={{ fontWeight: weight }}
-                      >
-                        The quick brown fox
+                      <div className="flex gap-6">
+                        <div
+                          className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1`}
+                          style={{ fontWeight: weight }}
+                        >
+                          The quick brown fox
+                        </div>
+                        <div
+                          className={`${size} text-black dark:text-white p-3 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 flex-1 uppercase`}
+                          style={{ fontWeight: weight }}
+                        >
+                          The quick brown fox
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           ))}
