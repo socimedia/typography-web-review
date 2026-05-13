@@ -21,6 +21,7 @@ export default function Home() {
   ];
 
   const [selectedSizes, setSelectedSizes] = useState(["text-base", "text-2xl"]);
+  const [sampleText, setSampleText] = useState("The quick brown fox");
   const activeSizeLabels = sizes
     .filter((item) => selectedSizes.includes(item.size))
     .map((item) => item.label)
@@ -40,14 +41,31 @@ export default function Home() {
         </h1>
 
         <section className="mb-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-col gap-3 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4">
+            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
+              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-3">
+                <span>Alphabet sample</span>
                 <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
-                  Controlled sizes
+                  3XL preview
                 </span>
               </div>
-              <div className="flex flex-wrap gap-1">
+              <div className="text-black dark:text-white">
+                <div className="text-3xl font-medium leading-snug">
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                </div>
+                <div className="text-3xl font-medium leading-snug mt-1">
+                  abcdefghijklmnopqrstuvwxyz
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5">
+              <div className="flex items-center justify-between text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-3">
+                <span className="rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1.5 text-xs uppercase tracking-[0.2em]">
+                  Controls
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-3">
                 {sizes.map(({ size, label }) => (
                   <label
                     key={size}
@@ -63,17 +81,19 @@ export default function Home() {
                   </label>
                 ))}
               </div>
-            </div>
-            <div className="text-black dark:text-white">
-              <div className="text-3xl font-medium leading-snug">
-                ABCDEFGHIJKLMNOPQRSTUVWXYZ
+              <div className="flex flex-col gap-2 text-sm">
+                <label className="flex flex-col gap-2 text-zinc-700 dark:text-zinc-300">
+                  <span className="text-xs uppercase tracking-[0.2em]">Sample text</span>
+                  <input
+                    value={sampleText}
+                    onChange={(event) => setSampleText(event.target.value)}
+                    className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm text-black outline-none transition focus:border-sky-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
+                  />
+                </label>
               </div>
-              <div className="text-3xl font-medium leading-snug mt-1">
-                abcdefghijklmnopqrstuvwxyz
+              <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-3">
+                Upper sample stays at 3XL; the checkbox list controls the examples below.
               </div>
-            </div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-500">
-              Upper sample stays at 3XL; the checkbox list controls the examples below.
             </div>
           </div>
         </section>
